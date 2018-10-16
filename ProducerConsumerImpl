@@ -16,13 +16,11 @@ public class ProducerConsumerImpl {
         { 
             synchronized (this) 
             { 
-                // producer thread waits while list 
-                // is full 
-                while (list.size()==capacity) 
-                    wait(); 
-
-                System.out.println("Producer produced-"
-                                              + value); 
+                // producer thread waits while list is full 
+                while (list.size()==capacity) {
+                wait(); 
+		}
+                System.out.println("Producer produced-"+ value); 
 
                 // to insert the jobs in the list 
                 list.add(value++); 
@@ -46,9 +44,9 @@ public class ProducerConsumerImpl {
             { 
                 // consumer thread waits while list 
                 // is empty 
-                while (list.size()==0) 
+                while (list.size()==0) {
                     wait(); 
-
+		}
                 //to retrive the ifrst job in the list 
                 int val = list.removeFirst(); 
 
